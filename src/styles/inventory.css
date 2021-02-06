@@ -1,0 +1,8 @@
+.container {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    justify-content: space-evenly;
+}
