@@ -1,7 +1,8 @@
 import NavBar from './navbar/NavBar'
 import Header from './header/Header'
-import Footer from './footer/Footer'
 import Inventory from './inventory/Inventory'
+import Details from './inventory/Details'
+import Footer from './footer/Footer'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <NavBar />
       <Header />
       <Inventory />
+      <Details />
       <Footer />
     </div>
   );
