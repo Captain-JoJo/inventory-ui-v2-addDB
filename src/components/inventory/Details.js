@@ -5,7 +5,7 @@ export default function GetInventoryData() {
 const [items, setItems] = useState([])
 
 const getItems = async () => {
-    axios.get("http://inventoryv2api.herokuapp.com/getData").then(res => {
+    axios.get("https://inventoryv2api.herokuapp.com/getData").then(res => {
         setItems(res.data)
     })
 }
