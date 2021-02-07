@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/inventory-ui-v2-adddb/static/css/main.1c0b0040.chunk.css",
-    "main.js": "/inventory-ui-v2-adddb/static/js/main.5b86352f.chunk.js",
-    "main.js.map": "/inventory-ui-v2-adddb/static/js/main.5b86352f.chunk.js.map",
-    "runtime-main.js": "/inventory-ui-v2-adddb/static/js/runtime-main.1e2d4710.js",
-    "runtime-main.js.map": "/inventory-ui-v2-adddb/static/js/runtime-main.1e2d4710.js.map",
-    "static/js/2.6b300f71.chunk.js": "/inventory-ui-v2-adddb/static/js/2.6b300f71.chunk.js",
-    "static/js/2.6b300f71.chunk.js.map": "/inventory-ui-v2-adddb/static/js/2.6b300f71.chunk.js.map",
-    "static/js/3.58880350.chunk.js": "/inventory-ui-v2-adddb/static/js/3.58880350.chunk.js",
-    "static/js/3.58880350.chunk.js.map": "/inventory-ui-v2-adddb/static/js/3.58880350.chunk.js.map",
-    "index.html": "/inventory-ui-v2-adddb/index.html",
-    "static/css/main.1c0b0040.chunk.css.map": "/inventory-ui-v2-adddb/static/css/main.1c0b0040.chunk.css.map",
-    "static/js/2.6b300f71.chunk.js.LICENSE.txt": "/inventory-ui-v2-adddb/static/js/2.6b300f71.chunk.js.LICENSE.txt"
+    "main.css": "/inventory-ui-v2-addDB/static/css/main.1c0b0040.chunk.css",
+    "main.js": "/inventory-ui-v2-addDB/static/js/main.5b86352f.chunk.js",
+    "main.js.map": "/inventory-ui-v2-addDB/static/js/main.5b86352f.chunk.js.map",
+    "runtime-main.js": "/inventory-ui-v2-addDB/static/js/runtime-main.a26538ba.js",
+    "runtime-main.js.map": "/inventory-ui-v2-addDB/static/js/runtime-main.a26538ba.js.map",
+    "static/js/2.6b300f71.chunk.js": "/inventory-ui-v2-addDB/static/js/2.6b300f71.chunk.js",
+    "static/js/2.6b300f71.chunk.js.map": "/inventory-ui-v2-addDB/static/js/2.6b300f71.chunk.js.map",
+    "static/js/3.58880350.chunk.js": "/inventory-ui-v2-addDB/static/js/3.58880350.chunk.js",
+    "static/js/3.58880350.chunk.js.map": "/inventory-ui-v2-addDB/static/js/3.58880350.chunk.js.map",
+    "index.html": "/inventory-ui-v2-addDB/index.html",
+    "static/css/main.1c0b0040.chunk.css.map": "/inventory-ui-v2-addDB/static/css/main.1c0b0040.chunk.css.map",
+    "static/js/2.6b300f71.chunk.js.LICENSE.txt": "/inventory-ui-v2-addDB/static/js/2.6b300f71.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1e2d4710.js",
+    "static/js/runtime-main.a26538ba.js",
     "static/js/2.6b300f71.chunk.js",
     "static/css/main.1c0b0040.chunk.css",
     "static/js/main.5b86352f.chunk.js"
