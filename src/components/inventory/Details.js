@@ -21,7 +21,7 @@ const getItems = async () => {
                 <ul>
                     {items.map(item =>(
                         <li>
-                            {`${item.name} ${item.rating} ${item.review}`}
+                            {`My fruits: ${item.name} ${item.rating} ${item.review}`}
                         </li>
                     ))}
                 </ul>
