@@ -54,7 +54,7 @@ export default function GetInventoryData() {
 
     const deleteOne = async () => {
         axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
-            deleteItem()
+            deleteItem('6029652a5e98fe0015dab1be')
             console.log('Only deleting one');
         })
     }
