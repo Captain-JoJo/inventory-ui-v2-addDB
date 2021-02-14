@@ -37,7 +37,7 @@ const deleteItems = async () => {
 }
 
 const deleteItems = async () => {
-    axios.get("https://inventoryv2api.herokuapp.com/deleteOneItem").then(res => {
+    axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
         if (setItems > 0) {
             setItems(res.data)
         } else {
