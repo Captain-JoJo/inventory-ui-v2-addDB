@@ -32,7 +32,7 @@ export default function GetInventoryData() {
     // }
 
     const remove = (id) => {
-        setItems(items.filter(item => item.id !== '60296c83a6e8c90015f0048d'))
+        setItems(items.filter(item => item.id !== id))
     }
 
     function deleteItem(id) {
