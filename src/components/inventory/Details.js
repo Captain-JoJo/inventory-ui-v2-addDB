@@ -38,12 +38,9 @@ const deleteAll = async () => {
 
 const deleteOne = async () => {
     axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
-        if (setItems > 0) {
-            setItems(res.data)
-        } else {
+
             deleteItem()            
-            console.log('deleteItems function called', deleteItem());
-        }
+            console.log('Only deleting one', deleteItem());
         console.log(res.data);
     })
 }
@@ -74,7 +71,7 @@ const deleteOne = async () => {
             <div>
                 {items.map(item =>(
                     <div>
-                        <span name={item.name} onClick={deleteOne}>Remove</span>
+                        <span name={item.name} onClick={deleteOne}>X</span>
                         <span>{item.name}</span>
                     </div>
                 ))}
