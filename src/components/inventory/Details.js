@@ -38,10 +38,8 @@ const deleteAll = async () => {
 
 const deleteOne = async () => {
     axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
-
         deleteItem()
-        setItems(res.data)
-        console.log('Only deleting one', deleteItem());
+        console.log('Only deleting one');
     })
 }
 
