@@ -31,6 +31,10 @@ export default function GetInventoryData() {
     //     })
     // }
 
+    const remove = (id) => {
+        setItems(items.filter(item => item.id !== '60296c83a6e8c90015f0048d'))
+    }
+
     function deleteItem(id) {
         setItems(prevItems => {
             return prevItems.filter((item, index) => {
@@ -54,7 +58,7 @@ export default function GetInventoryData() {
 
     const deleteOne = async () => {
         axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
-            deleteItem('6029652a5e98fe0015dab1be')
+            remove('60296c83a6e8c90015f0048d')
             console.log('Only deleting one');
         })
     }
@@ -94,7 +98,15 @@ export default function GetInventoryData() {
             <div>
                 {items.map(item =>(
                     <div>
-                        <span name={item.name} onClick={deleteOne}>X</span>
+                        <span>
+                            <button
+                            aria-label="DeleteOne"
+                            onClick={() => remove(item.id)}
+                            >
+                            Delete
+                            </button>
+                        </span>
+                        <span name={item.name} onClick={() => deleteOne(item.id)}>X</span>
                         <span>{item.name}</span>
                     </div>
                 ))}
