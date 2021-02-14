@@ -20,7 +20,7 @@ export default function GetInventoryData() {
                 newName  = i.name
                 console.log('individual name', newName);
             })
-            console.log('inside insertItems function', newName);
+            console.log('inside insertItems', newName);
         //setItems(res.data)
         })
     }
