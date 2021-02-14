@@ -33,6 +33,8 @@ export default function GetInventoryData() {
 
     const remove = (id) => {
         setItems(items.filter(item => item.id !== id))
+        console.log('regular id', id);
+
     }
 
     function deleteItem(id) {
