@@ -60,7 +60,7 @@ export default function GetInventoryData() {
 
     const deleteOne = async () => {
         axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
-            remove('60296c83a6e8c90015f0048d')
+            remove('60297c54f8facd0015281695')
             console.log('Only deleting one');
         })
     }
