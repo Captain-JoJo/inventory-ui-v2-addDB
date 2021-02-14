@@ -8,12 +8,15 @@ export default function GetInventoryData() {
 
     function handleChange(event) {
         const newValue = event.target.value
+        console.log('new Value', newValue);
         setInputText(newValue)
     }
 
     const insertItems = async () => {
         axios.get("https://inventoryv2api.herokuapp.com/insertData").then(res => {
-            setItems(res.data)
+            handleChange()
+            console.log('inside insertItems function', res.data);
+        //setItems(res.data)
         })
     }
 
