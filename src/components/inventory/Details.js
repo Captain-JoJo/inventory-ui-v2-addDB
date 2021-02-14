@@ -13,8 +13,9 @@ export default function GetInventoryData() {
     }
 
     const insertItems = async (event) => {
-        axios.post("https://inventoryv2api.herokuapp.com/insertData").then(res => {
+        axios.get("https://inventoryv2api.herokuapp.com/insertData").then(res => {
             console.log('the body', res.body);
+            console.log('the data', res.data);
         //setItems(res.data)
         })
     }
