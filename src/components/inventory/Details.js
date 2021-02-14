@@ -24,7 +24,7 @@ function deleteItem(id) {
     })
 }
 
-const deleteItems = async () => {
+const deleteAll = async () => {
     axios.get("https://inventoryv2api.herokuapp.com/deleteAll").then(res => {
         if (setItems > 0) {
             setItems(res.data)
@@ -36,7 +36,7 @@ const deleteItems = async () => {
     })
 }
 
-const deleteItems = async () => {
+const deleteOne = async () => {
     axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
         if (setItems > 0) {
             setItems(res.data)
@@ -67,14 +67,14 @@ const deleteItems = async () => {
                 <button className="fetch-button" onClick={getItems}>
                     Get Items
                 </button>
-                <button className="fetch-button" onClick={deleteItems}>
+                <button className="fetch-button" onClick={deleteAll}>
                     Delete All Items
                 </button>
             </div>
             <div>
                 {items.map(item =>(
                     <div>
-                        <span name={item.name} onClick={deleteOneItem}>Remove</span>
+                        <span name={item.name} onClick={deleteOne}>Remove</span>
                         <span>{item.name}</span>
                     </div>
                 ))}
