@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/inventory-ui-v2-addDB/static/css/main.6a04b570.chunk.css",
-    "main.js": "/inventory-ui-v2-addDB/static/js/main.84031790.chunk.js",
-    "main.js.map": "/inventory-ui-v2-addDB/static/js/main.84031790.chunk.js.map",
-    "runtime-main.js": "/inventory-ui-v2-addDB/static/js/runtime-main.09c6315b.js",
-    "runtime-main.js.map": "/inventory-ui-v2-addDB/static/js/runtime-main.09c6315b.js.map",
-    "static/js/2.250cbb4c.chunk.js": "/inventory-ui-v2-addDB/static/js/2.250cbb4c.chunk.js",
-    "static/js/2.250cbb4c.chunk.js.map": "/inventory-ui-v2-addDB/static/js/2.250cbb4c.chunk.js.map",
-    "static/js/3.c5f6880a.chunk.js": "/inventory-ui-v2-addDB/static/js/3.c5f6880a.chunk.js",
-    "static/js/3.c5f6880a.chunk.js.map": "/inventory-ui-v2-addDB/static/js/3.c5f6880a.chunk.js.map",
+    "main.js": "/inventory-ui-v2-addDB/static/js/main.9524dbbf.chunk.js",
+    "main.js.map": "/inventory-ui-v2-addDB/static/js/main.9524dbbf.chunk.js.map",
+    "runtime-main.js": "/inventory-ui-v2-addDB/static/js/runtime-main.34109059.js",
+    "runtime-main.js.map": "/inventory-ui-v2-addDB/static/js/runtime-main.34109059.js.map",
+    "static/js/2.5eccddbb.chunk.js": "/inventory-ui-v2-addDB/static/js/2.5eccddbb.chunk.js",
+    "static/js/2.5eccddbb.chunk.js.map": "/inventory-ui-v2-addDB/static/js/2.5eccddbb.chunk.js.map",
+    "static/js/3.f47b5fd1.chunk.js": "/inventory-ui-v2-addDB/static/js/3.f47b5fd1.chunk.js",
+    "static/js/3.f47b5fd1.chunk.js.map": "/inventory-ui-v2-addDB/static/js/3.f47b5fd1.chunk.js.map",
     "index.html": "/inventory-ui-v2-addDB/index.html",
     "static/css/main.6a04b570.chunk.css.map": "/inventory-ui-v2-addDB/static/css/main.6a04b570.chunk.css.map",
-    "static/js/2.250cbb4c.chunk.js.LICENSE.txt": "/inventory-ui-v2-addDB/static/js/2.250cbb4c.chunk.js.LICENSE.txt"
+    "static/js/2.5eccddbb.chunk.js.LICENSE.txt": "/inventory-ui-v2-addDB/static/js/2.5eccddbb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.09c6315b.js",
-    "static/js/2.250cbb4c.chunk.js",
+    "static/js/runtime-main.34109059.js",
+    "static/js/2.5eccddbb.chunk.js",
     "static/css/main.6a04b570.chunk.css",
-    "static/js/main.84031790.chunk.js"
+    "static/js/main.9524dbbf.chunk.js"
   ]
 }
