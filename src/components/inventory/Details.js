@@ -39,7 +39,7 @@ axios.post('/user', {
         //     //setItems(res.data)
         // })
         
-        axios.post("http://localhost:5000/insertData").then(res => {
+        axios.post("https://inventoryv2api.herokuapp.com/insertData").then(res => {
             // res.headers "Access-Control-Allow-Origin": "*"};
             // console.log('headers', res.headers);
             // res.headers({method: 'post'})
