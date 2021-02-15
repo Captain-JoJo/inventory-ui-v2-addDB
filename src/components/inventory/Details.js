@@ -29,7 +29,9 @@ axios.post('/user', {
 
     const insertItems = async (event) => {
         const payload = {name: "Haley, rating: 9, review: "I am here"}
-        axios.get("https://inventoryv2api.herokuapp.com/insertData", payload).then(res => {
+        axios.post("https://inventoryv2api.herokuapp.com/insertData", payload).then(res => {
+            res.headers({method: 'post'})
+            console.log('headers', res.headers);
             console.log('the body', res.body);
             console.log('the data', res.data);
         //setItems(res.data)
