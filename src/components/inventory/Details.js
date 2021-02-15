@@ -3,6 +3,9 @@ import axios from 'axios'
 
 export default function GetInventoryData() {
 
+    const BASE_URL = "http://localhost:5000"
+    const HEROKU_URL = "https://inventoryv2api.herokuapp.com"
+
     const [inputText, setInputText] = useState("")
     const [items, setItems] = useState([])
 
@@ -27,27 +30,33 @@ axios.post('/user', {
     console.log(error);
   }); */
 
+
     const insertItems = async (event) => {
-        const payload = {name: "Haley, rating: 9, review: "I am here"}
-        axios.post("https://inventoryv2api.herokuapp.com/insertData", payload).then(res => {
-            res.headers({method: 'post'})
-            console.log('headers', res.headers);
-            console.log('the body', res.body);
-            console.log('the data', res.data);
-        //setItems(res.data)
+        const payload = {name: "Haley"}
+        // await axios.post("http://localhost:5000/insertData").then(res => {
+        //         console.log('the respone API data', res.data);
+        //         console.log(payload);
+        //     //setItems(res.data)
+        // })
+        
+        axios.post("http://localhost:5000/insertData").then(res => {
+            // res.headers "Access-Control-Allow-Origin": "*"};
+            // console.log('headers', res.headers);
+            // res.headers({method: 'post'})
+            console.log('the request UI name', res);
+            console.log('the requeted UI data', res.data);
+            console.log('res.body id', res.data._id)
         })
+
     }
 
     const getItems = async () => {
-        axios.get("https://inventoryv2api.herokuapp.com/getData").then(res => {
+        const payload = {name: "Haley"}
+        axios.get("http://localhost:5000/getData").then(res => {
+            console.log(payload);
             setItems(res.data)
         })
     }
-    // const getItems = async () => {
-    //     axios.get("http://localhost:5000/getData").then(res => {
-    //         setItems(res.data)
-    //     })
-    // }
 
     const remove = (id) => {
         setItems(items.filter(item => item.id !== id))
@@ -65,7 +74,7 @@ axios.post('/user', {
     }
 
     const deleteAll = async () => {
-        axios.get("https://inventoryv2api.herokuapp.com/deleteAll").then(res => {
+        axios.get("http://localhost:5000/deleteAll").then(res => {
             if (setItems > 0) {
                 setItems(res.data)
             } else {
@@ -77,24 +86,11 @@ axios.post('/user', {
     }
 
     const deleteOne = async () => {
-        axios.get("https://inventoryv2api.herokuapp.com/deleteOne").then(res => {
+        axios.get("http://localhost:5000/deleteOne").then(res => {
             remove('60297c54f8facd0015281695')
             console.log('Only deleting one');
         })
     }
-
-    // const deleteItems = async () => {
-    //     axios.get("http://localhost:5000/deleteAll").then(res => {
-    //         if (setItems > 0) {
-    //             setItems(res.data)
-    //         } else {
-    //             deleteItem()            
-    //             console.log('deleteItems function called', deleteItem());
-    //         }
-    //         console.log(res.data);
-    //     })
-    // }
-
 
     return (
         <div className="grid-container">
