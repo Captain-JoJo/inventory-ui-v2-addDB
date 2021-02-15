@@ -11,6 +11,21 @@ export default function GetInventoryData() {
         console.log('new Value', newValue);
         setInputText(newValue)
     }
+    
+    /*
+    
+    https://github.com/axios/axios#creating-an-instance
+    
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  }); */
 
     const insertItems = async (event) => {
         const payload = {name: "Haley, rating: 9, review: "I am here"}
