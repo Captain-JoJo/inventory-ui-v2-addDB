@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import '../../styles/details.css'
 
 export default function GetInventoryData() {
 
@@ -9,89 +10,52 @@ export default function GetInventoryData() {
     const [inputText, setInputText] = useState("")
     const [items, setItems] = useState([])
 
-    function handleChange(event) {
-        const newValue = event.target.value
-        console.log('new Value', newValue);
-        setInputText(newValue)
-    }
     
-    /*
-    
-    https://github.com/axios/axios#creating-an-instance
-    
-axios.post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  }); */
+    // https://github.com/axios/axios#creating-an-instance
+    // const axiosCreate = axios.create({
+    //     baseURL: "http://localhost:5000/",
+    //     responseType: "json"
+    // });
+
+    // const insertItemsSample = async() =>{
+         //const res = await axios.post('https://httpbin.org/post', { hello: 'world' });    
+    //     const res = await axios.post('http://localhost:5000/insertData');
+    //     const res = await axios.post('http://localhost:5000/insertData', { hello: 'world' })
+    //         .then(function (response) {
+    //          console.log(response);
+    //        });
+        //console.log('this is the res of sample', res);
+    // }
 
 
-    const axiosCreate = axios.create({
-        baseURL: "http://localhost:5000/",
-        responseType: "json"
-    });
-            // axios.get('http://localhost:5000/insertData', {
-        //     name: 'Fred'
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   }); 
-
-
-    const insertItems = async (event) => {
-        const payload = "Haley"
+    const insertItems = async () => {
+        const payload = inputText
         // const stringifiedVersion = JSON.stringify(payload)
 
-        await axios.get("http://localhost:5000/insertData?name=" + payload, 
+        await axios.get(`${BASE_URL}/insertData?name=` + payload, 
                 {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': "*"
+                        'Content-Type': 'application/json'
                     }
                 }
             ).then(res => {
-            console.log('onlythe', res);
-            
             // res.headers "Access-Control-Allow-Origin": "*"};
             // console.log('headers', res.headers);
             // res.headers({method: 'post'})
-            console.log('the request UI entire res object', res);
-            console.log('the requeted UI res.data', res.data);
+            console.log('the UI response entire object', res);
+            console.log('the UI res.data info', res.data);
             console.log('res.body id', res.data._id)
         })
     }
 
     const getItems = async () => {
-        axios.get("http://localhost:5000/getData").then(res => {
+        axios.get(`${BASE_URL}/getData`).then(res => {
             setItems(res.data)
         })
     }
 
-    const remove = (id) => {
-        setItems(items.filter(item => item.id !== id))
-        console.log('regular id', id);
-
-    }
-
-    function deleteItem(id) {
-        setItems(prevItems => {
-            return prevItems.filter((item, index) => {
-                console.log('deleting items', item);
-                return item.id !== id
-            })
-        })
-    }
-
     const deleteAll = async () => {
-        axios.get("http://localhost:5000/deleteAll").then(res => {
+        axios.get(`${BASE_URL}/deleteAll`).then(res => {
             if (setItems > 0) {
                 setItems(res.data)
             } else {
@@ -103,9 +67,27 @@ axios.post('/user', {
     }
 
     const deleteOne = async () => {
-        axios.get("http://localhost:5000/deleteOne").then(res => {
+        axios.get(`${BASE_URL}/deleteOne`).then(res => {
             remove('60297c54f8facd0015281695')
             console.log('Only deleting one');
+        })
+    }
+    const remove = (id) => {
+        setItems(items.filter(item => item.id !== id))
+        console.log('regular id', id);
+    }
+
+    function handleChange(event) {
+        const newValue = event.target.value
+        console.log('new Value', newValue);
+        setInputText(newValue)
+    }
+    function deleteItem(id) {
+        setItems(prevItems => {
+            return prevItems.filter((item, index) => {
+                console.log('deleting items', item);
+                return item.id !== id
+            })
         })
     }
 
@@ -122,10 +104,10 @@ axios.post('/user', {
                     <span>Add Item</span>
                 </button>
                 <button className="fetch-button" onClick={getItems}>
-                    Get Items
+                   <span>Get Items</span>
                 </button>
                 <button className="fetch-button" onClick={deleteAll}>
-                    Delete All Items
+                    <span>Delete All Items</span>
                 </button>
             </div>
             <div>
@@ -133,10 +115,10 @@ axios.post('/user', {
                     <div>
                         <span>
                             <button
-                            aria-label="DeleteOne"
-                            onClick={() => remove(item.id)}
+                                aria-label="DeleteOne"
+                                onClick={() => remove(item.id)}
                             >
-                            Delete
+                                Delete
                             </button>
                         </span>
                         <span name={item.name} onClick={() => deleteOne(item.id)}>X</span>
