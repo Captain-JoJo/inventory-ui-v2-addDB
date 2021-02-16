@@ -117,15 +117,6 @@ export default function GetInventoryData() {
             <div>
                 {items.map(item =>(
                     <div>
-                        {/* {console.log(item._id)} */}
-                        {/* <span>
-                            <button
-                                aria-label="DeleteOne"
-                                onClick={() => remove(item.id)}
-                            >
-                                Delete
-                            </button>
-                        </span> */}
                         <span className="delete-me" name={item.name} onClick={() => deleteOne(item._id) }>X</span>
                         <span>{item.name}</span>
                     </div>
@@ -134,3 +125,14 @@ export default function GetInventoryData() {
         </div>
     )
 }   
+
+//extra 
+{/* {console.log(item._id)} */}
+{/* <span>
+    <button
+        aria-label="DeleteOne"
+        onClick={() => remove(item.id)}
+    >
+        Delete
+    </button>
+</span> */}
