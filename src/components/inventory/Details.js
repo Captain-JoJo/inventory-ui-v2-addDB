@@ -113,14 +113,14 @@ export default function GetInventoryData() {
             <div>
                 {items.map(item =>(
                     <div>
-                        <span>
+                        {/* <span>
                             <button
                                 aria-label="DeleteOne"
                                 onClick={() => remove(item.id)}
                             >
                                 Delete
                             </button>
-                        </span>
+                        </span> */}
                         <span name={item.name} onClick={() => deleteOne(item.id)}>X</span>
                         <span>{item.name}</span>
                     </div>
