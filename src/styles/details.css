@@ -6,3 +6,7 @@
     display: grid;
     justify-content: space-evenly;
 }
+
+.delete-me {
+    padding-right: 10px;
+}

@@ -46,6 +46,8 @@ export default function GetInventoryData() {
             console.log('the UI res.data info', res.data);
             console.log('res.body id', res.data._id)
         })
+        setInputText("")
+        getItems()
     }
 
     const getItems = async () => {
@@ -65,10 +67,19 @@ export default function GetInventoryData() {
             console.log(res.data);
         })
     }
+    function deleteItem(id) {
+        setItems(prevItems => {
+            return prevItems.filter((item, index) => {
+                console.log('deleting items', item);
+                return item.id !== id
+            })
+        })
+    }
 
-    const deleteOne = async () => {
+    const deleteOne = async (id) => {
         axios.get(`${HEROKU_URL}/deleteOne`).then(res => {
-            remove('60297c54f8facd0015281695')
+            remove(items.filter(item => item.id !== id))
+            getItems()
             console.log('Only deleting one');
         })
     }
@@ -82,14 +93,7 @@ export default function GetInventoryData() {
         console.log('new Value', newValue);
         setInputText(newValue)
     }
-    function deleteItem(id) {
-        setItems(prevItems => {
-            return prevItems.filter((item, index) => {
-                console.log('deleting items', item);
-                return item.id !== id
-            })
-        })
-    }
+    
 
     return (
         <div className="grid-container">
@@ -113,6 +117,7 @@ export default function GetInventoryData() {
             <div>
                 {items.map(item =>(
                     <div>
+                        {/* {console.log(item._id)} */}
                         {/* <span>
                             <button
                                 aria-label="DeleteOne"
@@ -121,7 +126,7 @@ export default function GetInventoryData() {
                                 Delete
                             </button>
                         </span> */}
-                        <span name={item.name} onClick={() => deleteOne(item.id)}>X</span>
+                        <span className="delete-me" name={item.name} onClick={() => deleteOne(item._id) }>X</span>
                         <span>{item.name}</span>
                     </div>
                 ))}
