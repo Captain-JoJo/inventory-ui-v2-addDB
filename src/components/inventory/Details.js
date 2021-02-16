@@ -31,29 +31,46 @@ axios.post('/user', {
   }); */
 
 
+    const axiosCreate = axios.create({
+        baseURL: "http://localhost:5000/",
+        responseType: "json"
+    });
+            // axios.get('http://localhost:5000/insertData', {
+        //     name: 'Fred'
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   }); 
+
+
     const insertItems = async (event) => {
-        const payload = {name: "Haley"}
-        // await axios.post("http://localhost:5000/insertData").then(res => {
-        //         console.log('the respone API data', res.data);
-        //         console.log(payload);
-        //     //setItems(res.data)
-        // })
-        
-        axios.post("https://inventoryv2api.herokuapp.com/insertData").then(res => {
+        const payload = "Haley"
+        // const stringifiedVersion = JSON.stringify(payload)
+
+        await axios.get("http://localhost:5000/insertData?name=" + payload, 
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': "*"
+                    }
+                }
+            ).then(res => {
+            console.log('onlythe', res);
+            
             // res.headers "Access-Control-Allow-Origin": "*"};
             // console.log('headers', res.headers);
             // res.headers({method: 'post'})
-            console.log('the request UI name', res);
-            console.log('the requeted UI data', res.data);
+            console.log('the request UI entire res object', res);
+            console.log('the requeted UI res.data', res.data);
             console.log('res.body id', res.data._id)
         })
-
     }
 
     const getItems = async () => {
-        const payload = {name: "Haley"}
         axios.get("http://localhost:5000/getData").then(res => {
-            console.log(payload);
             setItems(res.data)
         })
     }
