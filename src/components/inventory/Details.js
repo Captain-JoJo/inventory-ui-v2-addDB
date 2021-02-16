@@ -32,7 +32,7 @@ export default function GetInventoryData() {
         const payload = inputText
         // const stringifiedVersion = JSON.stringify(payload)
 
-        await axios.get(`${BASE_URL}/insertData?name=` + payload, 
+        await axios.get(`${HEROKU_URL}/insertData?name=` + payload, 
                 {
                     headers: {
                         'Content-Type': 'application/json'
@@ -49,13 +49,13 @@ export default function GetInventoryData() {
     }
 
     const getItems = async () => {
-        axios.get(`${BASE_URL}/getData`).then(res => {
+        axios.get(`${HEROKU_URL}/getData`).then(res => {
             setItems(res.data)
         })
     }
 
     const deleteAll = async () => {
-        axios.get(`${BASE_URL}/deleteAll`).then(res => {
+        axios.get(`${HEROKU_URL}/deleteAll`).then(res => {
             if (setItems > 0) {
                 setItems(res.data)
             } else {
@@ -67,7 +67,7 @@ export default function GetInventoryData() {
     }
 
     const deleteOne = async () => {
-        axios.get(`${BASE_URL}/deleteOne`).then(res => {
+        axios.get(`${HEROKU_URL}/deleteOne`).then(res => {
             remove('60297c54f8facd0015281695')
             console.log('Only deleting one');
         })
