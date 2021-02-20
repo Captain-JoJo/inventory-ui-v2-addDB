@@ -1,14 +1,14 @@
-import NavBar from './common/navbar/NavBar'
+import Navbar from './common/navbar/Navbar'
 import Header from './common/header/Header'
-import Details from '../components/home-loader/Details'
+import InventoryDetails from '../components/home-loader/Details'
 import Footer from './common/footer/Footer'
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <Navbar />
       <Header />
-      <Details />
+      <InventoryDetails />
       <Footer />
     </div>
   );
