@@ -62,7 +62,7 @@ export default function GetInventoryData() {
                 setItems(res.data)
             } else {
                 deleteItem()            
-                console.log('deleteItems function called', deleteItem());
+                console.log('deleteItems function called');
             }
             console.log(res.data);
         })
