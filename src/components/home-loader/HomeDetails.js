@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './details.css'
+import './HomeDetails.css'
+import * as api2 from '../api/inventoryItem'
 
 export default function GetInventoryData() {
 
@@ -10,45 +11,44 @@ export default function GetInventoryData() {
     const [inputText, setInputText] = useState("")
     const [items, setItems] = useState([])
 
-
     const insertItems = async () => {
-        const payload = inputText
-        // const stringifiedVersion = JSON.stringify(payload)
+        api2.insertItems2()
+        // const payload = inputText
+        // // const stringifiedVersion = JSON.stringify(payload)
 
-        await axios.get(`${BASE_URL}/insertData?name=` + payload, 
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            ).then(res => {
-            // res.headers "Access-Control-Allow-Origin": "*"};
-            // console.log('headers', res.headers);
-            // res.headers({method: 'post'})
-            console.log('the UI response entire object', res);
-            console.log('the UI res.data info', res.data);
-            console.log('res.body id', res.data._id)
-        })
-        setInputText("")
-        getItems()
+        // await axios.get(`${BASE_URL}/insertData?name=` + payload, 
+        //         {
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         }
+        //     ).then(res => {
+        //     console.log('the UI response entire object', res);
+        //     console.log('the UI res.data info', res.data);
+        //     console.log('res.body id', res.data._id)
+        // })
+        // setInputText("")
+        // getItems()
     }
 
     const getItems = async () => {
-        axios.get(`${BASE_URL}/getData`).then(res => {
-            setItems(res.data)
-        })
+        api2.getItems2()
+        // axios.get(`${BASE_URL}/getData`).then(res => {
+        //     setItems(res.data)
+        // })
     }
 
     const deleteAll = async () => {
-        axios.get(`${BASE_URL}/deleteAll`).then(res => {
-            if (setItems > 0) {
-                setItems(res.data)
-            } else {
-                deleteItem()            
-                console.log('deleteItems function called');
-            }
-            console.log(res.data);
-        })
+        api2.deleteAll2()
+        // axios.get(`${BASE_URL}/deleteAll`).then(res => {
+        //     if (setItems > 0) {
+        //         setItems(res.data)
+        //     } else {
+        //         deleteItem()            
+        //         console.log('deleteItems function called');
+        //     }
+        //     console.log(res.data);
+        // })
     }
     function deleteItem(id) {
         setItems(prevItems => {
@@ -72,6 +72,7 @@ export default function GetInventoryData() {
     }
 
     function handleChange(event) {
+        event.preventDefault()
         const newValue = event.target.value
         console.log('new Value', newValue);
         setInputText(newValue)

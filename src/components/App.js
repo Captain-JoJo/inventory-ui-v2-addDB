@@ -1,6 +1,6 @@
 import Navbar from './common/navbar/Navbar'
 import Header from './common/header/Header'
-import InventoryDetails from '../components/home-loader/Details'
+import HomeDetails from './home-loader/HomeDetails'
 import Footer from './common/footer/Footer'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div>
       <Navbar />
       <Header />
-      <InventoryDetails />
+      <HomeDetails />
       <Footer />
     </div>
   );
