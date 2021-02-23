@@ -23,22 +23,24 @@ export async function deleteAll2() {
     })
 }
 
-export async function insertItems2() {
+export async function insertItems2(item="Pear") {
     console.log("I am in insertItems2");
-    //const payload = inputText
-    // // const stringifiedVersion = JSON.stringify(payload)
+
+
+    //const payload = item
+    // const stringifiedVersion = JSON.stringify(payload)
     
-    // await axios.get(`${BASE_URL}/insertData?name=` + payload, 
-    //     {
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(res => {
-    //     console.log(res.data);
-    //     //     console.log('the UI response entire object', res);
-    //     //     console.log('the UI res.data info', res.data);
-    //     //     console.log('res.body id', res.data._id)
-    // })
+    await axios.get(`${BASE_URL}/insertData?name=` + item, 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+        console.log(res.data);
+        //     console.log('the UI response entire object', res);
+        //     console.log('the UI res.data info', res.data);
+        //     console.log('res.body id', res.data._id)
+    })
     // setInputText("")
     // getItems()
 }
