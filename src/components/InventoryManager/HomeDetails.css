@@ -1,0 +1,22 @@
+.container {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    justify-content: space-evenly;
+}
+.InputForm button {
+    margin-top: 3px;
+    margin-left: 10px;
+    height: 28px;
+}
+
+.button-group {
+    margin-left: auto;
+    float: right;
+}
+
+.delete-one-item {
+    padding-right: 10px;
+}
