@@ -18,13 +18,26 @@ export async function insertItem(item) {
 }
 
 export async function getAllItems() {
-    axios.get(`${BASE_URL}/getData`).then(res => {
-        console.log(res.data);    
-    })
+    return (
+        await axios.get(`${BASE_URL}/getData`).then(res => {
+            return res.data
+        })
+    )
 }
 
 export async function deleteAllItems() {
     axios.get(`${BASE_URL}/deleteAll`).then(res => {
         console.log(res.data);
     })
+}
+
+
+export async function deleteOneItem(removingId) {
+    return (
+        axios.get(`${BASE_URL}/deleteOne`).then(res => {
+            console.log('I am trying to remove this one', removingId[0]);
+            console.log('This is the res.data in deleteOneItem function', res.data);
+            return res.data
+        })
+    )
 }

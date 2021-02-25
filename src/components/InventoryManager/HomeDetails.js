@@ -1,8 +1,7 @@
 import React, { useState, useInputState } from 'react'
-import axios from 'axios'
 import './HomeDetails.css'
 import InputForm from './input-form'
-import { insertItem, getAllItems, deleteAllItems } from '../../api/inventoryItem'
+import { insertItem, getAllItems, deleteAllItems, deleteOneItem } from '../../api/inventoryItem'
 
 export default function GetInventoryData() {
 
@@ -25,33 +24,39 @@ export default function GetInventoryData() {
         }
     }
 
-    const getItems = async () => {
-        //axiosCallFile.getItems2()
-        axios.get(`${BASE_URL}/getData`).then(res => {
-            setItems(res.data)
-        })
+    async function displayItems(){
+        const results = await getAllItems()
+        setItems(results)
     }
 
-    // const insertItems = async (item) => {
-    //     const pearItem = setItems()
-    //     console.log(pearItem);
-    //     //api call with sending item="Pear"
-    //     axiosCallFile.insertItems2(pearItem)
-    //     // setInputText("")
-    //     // getItems()
-    // }
-   
-    const deleteAll = async () => {
-        //axiosCallFile.deleteAll2()
-        axios.get(`${BASE_URL}/deleteAll`).then(res => {
-            if (setItems > 0) {
-                setItems(res.data)
-            } else {
-                deleteItem()            
-                console.log('deleteItems function called');
-            }
-            console.log(res.data);
-        })
+    async function deleteAll() {
+        try {
+            await deleteAllItems()
+            setItems([])
+        } catch (error) {
+            console.log('sql error', error);
+        }
+    }
+    
+    async function deleteOne(id) {
+        console.log('initial id', id);
+        const removingId = items.filter(item => item.id !== id)
+        console.log('this is the result of items.filter and the IDs found', removingId);
+        try {
+            const results = await deleteOneItem(removingId)
+            console.log('const results from the await deleteOneItem', results);
+            //setItems(removingId)
+
+        } catch (error) {
+            console.log('sql error', error);
+        }
+    }
+
+    //These 2 need to combine or figure out which one to use
+    const remove = (id) => {
+        setItems(items.filter(item => item.id !== id))
+        console.log('regular id', id[0]._id);
+        
     }
     function deleteItem(id) {
         setItems(prevItems => {
@@ -61,17 +66,6 @@ export default function GetInventoryData() {
             })
         })
     }
-    const deleteOne = async (id) => {
-        axios.get(`${BASE_URL}/deleteOne`).then(res => {
-            remove(items.filter(item => item.id !== id))
-            getItems()
-            console.log('Only deleting one');
-        })
-    }
-    const remove = (id) => {
-        setItems(items.filter(item => item.id !== id))
-        console.log('regular id', id);
-    }
     
     return (
         <div className="grid-container">
@@ -79,7 +73,7 @@ export default function GetInventoryData() {
                 <InputForm addNewItem={addNewItem} className="InputForm" />
             </div>
             <div>
-                <button onClick={getItems}>
+                <button onClick={displayItems}>
                     <span>Get Items</span>    
                 </button>
                 <button onClick={deleteAll}>
