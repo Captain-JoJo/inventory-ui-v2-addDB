@@ -12,13 +12,19 @@ export default function GetInventoryData() {
     const [items, setItems] = useState([])
 
 
-    async function addNewItem(item) {
-        const updatedItems = [ ...items, { name: item } ]
-        console.log(updatedItems);
-
+    async function addNewItem(item, review) {
+        
         try {
-            await insertItem(item)
+            
+            console.log('?',item);
+            const _id = await insertItem(item, review)
+
+            const updatedItems = [ ...items, { _id: _id, name: item, review: review } ]
+
+            console.log('This is the updatedItems', updatedItems);
+
             setItems(updatedItems)
+
         } catch (error) {
             console.log('sql error', error);
         }
@@ -40,10 +46,12 @@ export default function GetInventoryData() {
     
     async function deleteOne(id) {
         console.log('initial id', id);
-        const removingId = items.filter(item => item.id !== id)
-        console.log('this is the result of items.filter and the IDs found', removingId);
+        //const removingId = items.filter(item => item._id !== id)
+        //console.log('this is the result of items.filter and the IDs found', removingId);
         try {
-            const results = await deleteOneItem(removingId)
+            const results = await deleteOneItem(id)
+            setItems(items.filter(item => item._id !== id))
+
             console.log('const results from the await deleteOneItem', results);
             //setItems(removingId)
 
@@ -82,9 +90,9 @@ export default function GetInventoryData() {
             </div>                
             <div>
                 {items.map(item =>(
-                    <div>
+                    <div key={item._id}>
                         <span className="delete-one-item" name={item.name} onClick={() => deleteOne(item._id) }>X</span>
-                        <span>{item.name}</span>
+                        <span >{item.name}</span>
                     </div>
                 ))}
             </div>
