@@ -5,20 +5,16 @@ const HEROKU_URL = "https://inventoryv2api.herokuapp.com"
 
 
 export async function insertItem(item, review) {
-    console.log('simple item', item);
+    const payload = { 
+        name: item, 
+        review: "review23" 
+    }
 
-    const base_url2 = "http://localhost:5000/insertData2"
-    const payload = { name: item , review: "review23" }
-
-    console.log('simple payload', payload);
-
-    let result = await axios.post(base_url2, payload)
-
-    console.log('simple axios result', result.data._id);
+    let result = await axios.post(`${BASE_URL}/insertData`, payload)
     return result.data._id
 }
 
-
+//Old way of before converting to a POST - will remove later
 // export async function insertItem(item) {
 //     return axios.get(`${BASE_URL}/insertData?name=` + item, 
 //         {
