@@ -29,6 +29,9 @@ function InputForm({addNewItem}) {
                 label="Add New Item"
             />
             <button type="submit">Add New Item</button>
+            <button type="submit">Testing Button</button>
+            
+            
         </form>
     )
 }

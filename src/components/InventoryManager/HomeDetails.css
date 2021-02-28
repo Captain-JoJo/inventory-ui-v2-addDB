@@ -1,22 +1,57 @@
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 .grid-container {
-    display: grid;
-    justify-content: space-evenly;
+  margin: auto;
+  margin-top: 10px;
+  max-width: 700px;
+  padding: 15px;
+  padding-bottom: 200px;
+  background: #fdf5f5;
+  color: #222;
+}
+.InputForm {
+  margin-bottom: 10px;
+  display: inline;
+  /* border-style: dotted; */
+}
+.InputForm input {
+  margin: 5px;
+  padding: 5px;
 }
 .InputForm button {
-    margin-top: 3px;
-    margin-left: 10px;
-    height: 28px;
+  margin-top: 3px;
+  margin-left: 10px;
+  height: 28px;
+}
+
+.button {
+  margin-left: 10px;
+  width: 60px;
+  height: 25px;
 }
 
 .button-group {
-    margin-left: auto;
-    float: right;
+  margin-left: auto;
+  float: right;
 }
 
 .delete-one-item {
-    padding-right: 10px;
+  padding-right: 10px;
+}
+.ListContainer {
+  border-style: none;
+}
+.ListContainer ul {
+  margin: 0;
+  padding: 0; /* forces the group of li rows to the left */
+  list-style-type: none;
+  /* border-style: solid; */
+}
+.ListContainer li {
+  display: inline;
+  margin-top: 5px;
+  padding: 7px 0px 2px 0px;
+  /* border-bottom-style: groove */
 }

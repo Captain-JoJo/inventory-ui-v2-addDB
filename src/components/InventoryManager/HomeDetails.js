@@ -1,112 +1,109 @@
-import React, { useState, useInputState } from 'react'
-import './HomeDetails.css'
-import InputForm from './input-form'
-import { insertItem, getAllItems, deleteAllItems, deleteOneItem } from '../../api/inventoryItem'
+import React, { useState, useInputState } from "react";
+import "./HomeDetails.css";
+import InputForm from "./input-form";
+import List from "./inventory-list";
+import {
+  insertItem,
+  getAllItems,
+  deleteAllItems
+} from "../../api/inventoryItem";
 
 export default function GetInventoryData() {
+  const BASE_URL = "http://localhost:5000";
+  const HEROKU_URL = "https://inventoryv2api.herokuapp.com";
 
-    const BASE_URL = "http://localhost:5000"
-    const HEROKU_URL = "https://inventoryv2api.herokuapp.com"
+  //const [inputText, setInputText] = useState("")
+  const [items, setItems] = useState([]);
 
-    //const [inputText, setInputText] = useState("")
-    const [items, setItems] = useState([])
-
-
-    async function addNewItem(item, review) {
-        
-        try {
-            
-            console.log('?',item);
-            const _id = await insertItem(item, review)
-
-            const updatedItems = [ ...items, { _id: _id, name: item, review: review } ]
-
-            console.log('This is the updatedItems', updatedItems);
-
-            setItems(updatedItems)
-
-        } catch (error) {
-            console.log('sql error', error);
-        }
+  async function addNewItem(item, review) {
+    try {
+      const _id = await insertItem(item, review);
+      const updatedItems = [...items, { _id: _id, name: item, review: review }];
+      console.log("This is the updatedItems", updatedItems);
+      setItems(updatedItems);
+    } catch (error) {
+      console.log("sql error", error);
     }
+  }
 
-    async function displayItems(){
-        const results = await getAllItems()
-        setItems(results)
-    }
+  async function displayItems() {
+    const results = await getAllItems();
+    setItems(results);
+  }
 
-    async function deleteAll() {
-        try {
-            await deleteAllItems()
-            setItems([])
-        } catch (error) {
-            console.log('sql error', error);
-        }
+  async function deleteAll() {
+    try {
+      await deleteAllItems();
+      setItems([]);
+    } catch (error) {
+      console.log("sql error", error);
     }
-    
-    async function deleteOne(id) {
-        console.log('initial id', id);
-        //const removingId = items.filter(item => item._id !== id)
-        //console.log('this is the result of items.filter and the IDs found', removingId);
-        try {
-            const results = await deleteOneItem(id)
-            setItems(items.filter(item => item._id !== id))
+  }
 
-            console.log('const results from the await deleteOneItem', results);
-            //setItems(removingId)
+//   async function deleteOne(id) {
+//     console.log("initial id", id);
+//     try {
+//     const results = await deleteOneItem(id);
+//     setItems(items.filter((item) => item._id !== id));
+//     console.log("const results from the await deleteOneItem", results);
+//     } catch (error) {
+//     console.log("sql error", error);
+//     }
+//   }
 
-        } catch (error) {
-            console.log('sql error', error);
-        }
-    }
 
-    //These 2 need to combine or figure out which one to use
-    const remove = (id) => {
-        setItems(items.filter(item => item.id !== id))
-        console.log('regular id', id[0]._id);
-        
-    }
-    function deleteItem(id) {
-        setItems(prevItems => {
-            return prevItems.filter((item, index) => {
-                console.log('deleting items', item);
-                return item.id !== id
-            })
-        })
-    }
-    
-    return (
-        <div className="grid-container">
-            <div>
-                <InputForm addNewItem={addNewItem} className="InputForm" />
+  return (
+    <div className="grid-container">
+      <div>
+        <InputForm addNewItem={addNewItem} className="InputForm" />
+
+        <button onClick={displayItems}>
+          <span>Get Items</span>
+        </button>
+        <button onClick={deleteAll}>
+          <span>Delete All Items</span>
+        </button>
+      </div>
+
+    <div>
+        <List/>
+    </div>
+
+      {/* <div className="ListContainer">
+        <ul>
+          {items.map((item) => (
+            <div key={item._id}>
+              <li>
+                <span>{item.name}</span>
+                <span className="button-group">
+                  <span
+                    className="button"
+                    name={item.name}
+                    onClick={() => deleteOne(item._id)}
+                  >
+                    Remove
+                  </span>
+                </span>
+              </li>
             </div>
-            <div>
-                <button onClick={displayItems}>
-                    <span>Get Items</span>    
-                </button>
-                <button onClick={deleteAll}>
-                    <span>Delete All Items</span>
-                </button>
-            </div>                
-            <div>
-                {items.map(item =>(
-                    <div key={item._id}>
-                        <span className="delete-one-item" name={item.name} onClick={() => deleteOne(item._id) }>X</span>
-                        <span >{item.name}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
-}   
+          ))}
+        </ul>
+      </div> */}
+    </div>
+  );
+}
 
-//extra 
-{/* {console.log(item._id)} */}
-{/* <span>
+//extra
+{
+  /* {console.log(item._id)} */
+}
+{
+  /* <span>
     <button
         aria-label="DeleteOne"
         onClick={() => remove(item.id)}
     >
         Delete
     </button>
-</span> */}
+</span> */
+}
