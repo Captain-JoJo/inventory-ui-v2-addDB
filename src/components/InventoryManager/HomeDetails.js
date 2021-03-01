@@ -5,7 +5,8 @@ import List from "./inventory-list";
 import {
   insertItem,
   getAllItems,
-  deleteAllItems
+  deleteAllItems,
+  deleteOneItem
 } from "../../api/inventoryItem";
 
 export default function GetInventoryData() {
@@ -40,16 +41,17 @@ export default function GetInventoryData() {
     }
   }
 
-//   async function deleteOne(id) {
-//     console.log("initial id", id);
-//     try {
-//     const results = await deleteOneItem(id);
-//     setItems(items.filter((item) => item._id !== id));
-//     console.log("const results from the await deleteOneItem", results);
-//     } catch (error) {
-//     console.log("sql error", error);
-//     }
-//   }
+  async function deleteOne(id) {
+    console.log("initial id", id);
+    try {
+    const results = await deleteOneItem(id);
+    console.log('I have deleted one and then need to reset UI');
+    setItems(items.filter((item) => item._id !== id));
+    console.log("const results from the await deleteOneItem", results);
+    } catch (error) {
+    console.log("sql error", error);
+    }
+  }
 
 
   return (
@@ -66,10 +68,23 @@ export default function GetInventoryData() {
       </div>
 
     <div>
-        <List/>
+        {items.map((inventoryItem, index) => (
+            <List
+                key={inventoryItem._id}
+                _id={inventoryItem._id}
+                name={inventoryItem.name}
+                onChecked={deleteOne}
+            />
+        ))}
     </div>
 
-      {/* <div className="ListContainer">
+      
+    </div>
+  );
+}
+
+// Removed this to pass to List module
+{/* <div className="ListContainer">
         <ul>
           {items.map((item) => (
             <div key={item._id}>
@@ -89,21 +104,3 @@ export default function GetInventoryData() {
           ))}
         </ul>
       </div> */}
-    </div>
-  );
-}
-
-//extra
-{
-  /* {console.log(item._id)} */
-}
-{
-  /* <span>
-    <button
-        aria-label="DeleteOne"
-        onClick={() => remove(item.id)}
-    >
-        Delete
-    </button>
-</span> */
-}

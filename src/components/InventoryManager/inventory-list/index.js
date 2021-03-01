@@ -1,9 +1,46 @@
-import React, {useState} from 'react'
+import React from 'react'
 import "../HomeDetails.css";
-import { deleteOneItem } from "../../../api/inventoryItem";
 
-function List() {
-    const [items, setItems] = useState([]);
+export default function List(props) {
+
+ const displayItems = (props) => {
+    console.log('trying to see if there are any props here', props);
+
+    if(props.name.length > 0){
+        return (
+             <div className="ListContainer">
+                <ul>
+                    <li>
+                        <span>{props.name}</span>
+                        <span className="button-group">
+                            <span
+                                className="button"
+                                _id={props._id}
+                                name={props.name}
+                                onClick={() => props.onChecked(props._id)}
+                            >
+                                Remove
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        )
+    } else {
+        return (<h3>I have no items to display yet</h3>)
+    }
+ }
+ return (
+     <> {(displayItems(props))} </>
+ )
+}
+
+
+
+
+
+/*
+const [items, setItems] = useState([]);
 
     async function deleteOne(id) {
         console.log("initial id", id);
@@ -38,6 +75,4 @@ function List() {
             </ul>
         </div>
     )
-}
-
-export default List
+    */
