@@ -1,7 +1,14 @@
 .footer {
-    position: fixed;
+    /* position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
-    text-align: center;
+    width: 100%;*/
+    text-align: center; 
+    position: relative;
+    padding-bottom: 200px;
+    /* margin-top: -180px; */
+    /* negative value of footer height */
+    /* height: 180px; */
+    /* clear: both; */
+    /* background-color: red; */
 }

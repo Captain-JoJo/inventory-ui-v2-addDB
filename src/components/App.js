@@ -1,17 +1,20 @@
-import Navbar from './common/navbar/Navbar'
-import Header from './common/header/Header'
-import HomeDetails from './InventoryManager/HomeDetails'
-import Footer from './common/footer/Footer'
+import Navbar from "./common/navbar/Navbar";
+import Header from "./common/header/Header";
+import InventoryDetails from "./InventoryManager/InventoryDetails";
+import Footer from "./common/footer/Footer";
+import NotFoundPage from "./common/NotFoundPage";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function App() {
-  return (
-    <div>
+const AppRouter = () => (
+  <BrowserRouter>
       <Navbar />
       <Header />
-      <HomeDetails />
+      <Switch>
+        <Route path="/" component={InventoryDetails} />
+        <Route component={NotFoundPage} />
+      </Switch>
       <Footer />
-    </div>
-  );
-}
+  </BrowserRouter>
+)
 
-export default App;
+export default AppRouter
