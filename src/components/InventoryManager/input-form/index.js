@@ -31,13 +31,14 @@ function InputForm({ addNewItem }) {
         label="Add New Item"
       />
       <input
+        className="qtyInput"
         type="text"
         value={itemQty}
         placeholder="Add Quantity"
         onChange={handleChangeQty}
         label="Add Quantity"
       />
-      <button type="submit">Add New Item</button>
+      <button type="submit">Add Item</button>
     </form>
   );
 }

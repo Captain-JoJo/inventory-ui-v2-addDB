@@ -20,20 +20,6 @@ export async function insertItem(itemName, itemQty) {
   }
 }
 
-//Old way of before converting to a POST - will remove later
-// export async function insertItem(item) {
-//     return axios.get(`${BASE_URL}/insertData?name=` + item,
-//         {
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         }).then(res => {
-//         console.log('the UI response entire object', res);
-//         console.log('the UI res.data info', res.data);
-//         console.log('res.body id', res.data._id)
-//     })
-// }
-
 export async function getAllItems() {
   return await axios.get(`${BASE_URL}/getData`).then((res) => {
     return res.data;
@@ -54,6 +40,14 @@ export async function deleteOneItem(id) {
     return res.data;
   });
 }
+export async function updateOneItem(id, itemName, qty) {
+  const payload = { name: itemName, qty: qty };
+  return axios.put(`${BASE_URL}/updateOne/${id}`, payload).then((res) => {
+    console.log("I am trying to update this one", id);
+    console.log("This is the res.data in updateOneItem function", res.data);
+    return res.data;
+  });
+}
 
 // NOT used yet
 // export async function updateAllItems() {
@@ -62,10 +56,3 @@ export async function deleteOneItem(id) {
 //   });
 // }
 
-// export async function updateOneItem(id) {
-//   return axios.put(`${BASE_URL}/updateOne`).then((res) => {
-//     console.log("I am trying to update this one", id);
-//     console.log("This is the res.data in updateOneItem function", res.data);
-//     return res.data;
-//   });
-// }

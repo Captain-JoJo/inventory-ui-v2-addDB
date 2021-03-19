@@ -19,12 +19,12 @@
 .InputForm input {
   margin: 5px;
   padding: 5px;
-  
 }
+
 .InputForm button {
   margin-top: 3px;
   margin-left: 10px;
-  width: 125px;
+  width: 100px;
   height: 30px;
 }
 
@@ -36,7 +36,7 @@
 
 .button {
   margin-left: 10px;
-  width: 125px;
+  width: 100px;
   height: 30px;
 }
 
@@ -59,17 +59,52 @@
 .ListContainer ul {
   margin: 0;
   padding: 0; /* forces the group of li rows to the left */
-  border-bottom-style: groove;
+  /* border-bottom-style: groove; */
 }
 .ListContainer li {
-  display: inline;
+  display: grid;
   margin-top: 5px;
   padding: 7px 0px 2px 0px;
   /* border-bottom-style: groove */
+}
+.TableContainer {
+  width: 100%;
+  /* border-style: groove; */
+  border-collapse: collapse;
+  margin-top: 5px;
+  padding: 7px 0px 2px 10px;
+}
+.trList {
+  padding: 150px;
+}
+
+
+.TableContainer tr{
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+.TableContainer td {
+  margin: 0px;
+  padding: 5px;
+  /* border-bottom-style: groove */
   
 }
-.qty {
+
+.tdQty{
+  width: 10%;
+}
+
+.tdName{
+  width: 60%;
+}
+.qtyInput {
+  width: 80px
+}
+
+
+/* .qty {
   display: inline;
   margin-top: 25px;
   padding: 7px 0px 2px 0px;
-}
+} */

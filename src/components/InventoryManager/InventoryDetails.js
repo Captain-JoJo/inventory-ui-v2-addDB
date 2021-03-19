@@ -1,17 +1,32 @@
-import React, { useState, useInputState } from "react";
+import React, { useState, useEffect } from "react";
 import "./InventoryDetails.css";
 import InputForm from "./input-form";
-import List from "./inventory-list";
+import ListItem from "./inventory-list";
 import {
   insertItem,
   getAllItems,
   deleteAllItems,
   deleteOneItem,
+  updateOneItem,
 } from "../../api/inventoryItem";
 
 export default function InventoryDetails() {
-
   const [items, setItems] = useState([]);
+  console.log('begin items', items);
+
+  useEffect(() => {
+    console.log("first useEffect -- run one time to get the starting data");
+    displayItems(setItems);
+    console.log(items);
+    // ignore the following [] warning
+  }, []); // actually need the empty dependency array [] so only executed once
+
+  // Any time rowDataArray changes then this hook will automatically be called.
+  // Uncomment the following to console view the rowDataArray as it is updated.
+  useEffect(() => {
+    console.log("second useEffect runs whenever the items changes");
+    console.log(items);
+  }, [items]);
 
   // suggestion: use hook to load the inventory manager
   //             put into a reusable hook or another module
@@ -21,7 +36,10 @@ export default function InventoryDetails() {
       // take try/catch out here and put it inot the insertItem function
       // if using something like thunk later on it is helpful to seperate out operations.
       const _id = await insertItem(itemName, itemQty);
-      const updatedItems = [...items, { _id: _id, name: itemName, qty: itemQty }];
+      const updatedItems = [
+        ...items,
+        { _id: _id, name: itemName, qty: itemQty },
+      ];
       console.log("This is the updatedItems", updatedItems);
       setItems(updatedItems);
     } catch (error) {
@@ -58,6 +76,25 @@ export default function InventoryDetails() {
       console.log("deleteOneItem sql error", error);
     }
   }
+  async function editAll(id, itemName, qty) {
+    try {
+      const updatedRow = { _id: id, name: itemName, qty: qty };
+
+      console.log('updated row', updatedRow);
+      // check each row for the matching id and if found return the updated row
+      const updatedItems = items.map((row) => {
+        if (row._id === id) {
+          return updatedRow;
+        }
+        return row;
+      });
+      setItems(updatedItems);
+      const results = await updateOneItem(id, itemName, qty);
+      // console.log("const results from the await updateOneItem", results);
+    } catch (error) {
+      console.log("updateOneItem sql error", error);
+    }
+  }
 
   return (
     <div className="grid-container">
@@ -68,17 +105,31 @@ export default function InventoryDetails() {
           Get Items
         </button>
         <button className="button" onClick={deleteAll}>
-          Delete All Items
+          Delete All
         </button>
       </div>
 
-      <ul>
-        {items.map(inventoryItem => (
-          <li key={inventoryItem._id}>
-            <List inventoryItem={inventoryItem} onChecked={deleteOne} />
-          </li>
+      <table className="TableContainer">
+        {items.map((inventoryItem) => (
+          <tbody key={inventoryItem._id}>
+            <ListItem
+              inventoryItem={inventoryItem}
+              handleRemoveOne={deleteOne}
+              update={editAll}
+            />
+          </tbody>
         ))}
-      </ul>
+      </table>
+
+      {/* <div className="ListContainer"> */}
+      {/* <ul  className="ListContainer"> */}
+      {/* {items.map(inventoryItem => (
+            <li key={inventoryItem._id}>
+              <ListItem inventoryItem={inventoryItem} onChecked={deleteOne} />
+            </li>
+          ))} */}
+      {/* </ul> */}
+      {/* </div> */}
     </div>
   );
 }
