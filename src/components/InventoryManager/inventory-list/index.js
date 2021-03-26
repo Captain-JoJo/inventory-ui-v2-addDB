@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useState} from "react";
 import EditItemForm from "../edit-form";
 
-export default function ListItem({ inventoryItem, handleRemoveOne, update }) {
-  const { name, qty, _id, fav } = inventoryItem;
+export default function ListItem({inventoryItem, handleRemoveOne, update}) {
+  const {name, qty, _id, fav} = inventoryItem;
   const [isEditing, toggle] = useToggle(false);
 
   function useToggle(initialValue = false) {
@@ -17,11 +17,7 @@ export default function ListItem({ inventoryItem, handleRemoveOne, update }) {
   return (
     <Fragment>
       {isEditing ? (
-        <EditItemForm
-          inventoryItem={inventoryItem}
-          update={update}
-          toggle={toggle}
-        />
+        <EditItemForm inventoryItem={inventoryItem} update={update} toggle={toggle} />
       ) : (
         <Fragment>
           <tr>
@@ -39,7 +35,9 @@ export default function ListItem({ inventoryItem, handleRemoveOne, update }) {
             <td>
               <span className="button-group">
                 <button className="button" onClick={toggle}>Edit</button>
-                <button className="button" onClick={() => handleRemoveOne(_id)}>Remove</button>
+                <button className="button" onClick={() => handleRemoveOne(_id)}>
+                  Remove
+                </button>
               </span>
             </td>
           </tr>

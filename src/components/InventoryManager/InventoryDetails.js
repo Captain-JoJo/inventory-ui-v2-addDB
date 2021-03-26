@@ -14,18 +14,11 @@ export default function InventoryDetails() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    console.log("first useEffect -- run one time to get the starting data");
+    console.log("run one time to get the starting data");
+    //toggle on spinner waiting for data to return
     displayItems(setItems);
-    // console.log(items);
-    // ignore the following [] warning
+    //data is present and now need to take toggle off
   }, []); // actually need the empty dependency array [] so only executed once
-
-  // Any time rowDataArray changes then this hook will automatically be called.
-  // Uncomment the following to console view the rowDataArray as it is updated.
-  // useEffect(() => {
-  //   console.log("second useEffect runs whenever the items changes");
-  //   console.log(items);
-  // }, [items]);
 
   // suggestion: use hook to load the inventory manager
   //             put into a reusable hook or another module
@@ -106,7 +99,8 @@ export default function InventoryDetails() {
           Delete All
         </button> */}
       </div>
-
+{/* ternary if true the toggle is turned on display spinner 
+if false then diplay table*/}
       <table className="TableContainer">
         <thead>
           <tr className="trHead">
@@ -126,16 +120,6 @@ export default function InventoryDetails() {
           </tbody>
         ))}
       </table>
-
-      {/* <div className="ListContainer"> */}
-      {/* <ul  className="ListContainer"> */}
-      {/* {items.map(inventoryItem => (
-            <li key={inventoryItem._id}>
-              <ListItem inventoryItem={inventoryItem} onChecked={deleteOne} />
-            </li>
-          ))} */}
-      {/* </ul> */}
-      {/* </div> */}
     </div>
   );
 }
