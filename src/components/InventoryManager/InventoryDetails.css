@@ -1,11 +1,7 @@
-.container {
-  text-align: center;
-}
-
 .grid-container {
   margin: auto;
   margin-top: 10px;
-  max-width: 700px;
+  max-width: 500px;
   padding: 15px;
   /* padding-bottom: 200px; */
   background: #b8bec9;
@@ -24,20 +20,28 @@
 .InputForm button {
   margin-top: 3px;
   margin-left: 10px;
-  width: 100px;
+  width: 75px;
   height: 30px;
 }
-
 
 .InputForm button:hover {
   text-decoration: underline;
   color: blue;
 }
+.TableContainer button {
+  margin-left: 5px;
+  font-size: x-small;
+  width: 60px;
+  height: 20px;
+  display: inline;
+}
 
 .button {
-  margin-left: 10px;
-  width: 100px;
-  height: 30px;
+  margin-left: 5px;
+  font-size: x-small;
+  width: 60px;
+  height: 20px;
+  display: inline;
 }
 
 .button:hover {
@@ -83,6 +87,10 @@
   border-bottom-style: solid;
   border-width: 1px;
 }
+.TableContainer tr.trHead{
+  border-bottom-style: none;
+  text-align: left;
+}
 
 .TableContainer td {
   margin: 0px;
@@ -91,15 +99,19 @@
   
 }
 
+.tdFav{
+  width: 7%;
+}
+
 .tdQty{
   width: 10%;
 }
 
 .tdName{
-  width: 60%;
+  width: 40%;
 }
 .qtyInput {
-  width: 80px
+  width: 30px
 }
 
 

@@ -12,33 +12,33 @@ import {
 
 export default function InventoryDetails() {
   const [items, setItems] = useState([]);
-  console.log('begin items', items);
 
   useEffect(() => {
     console.log("first useEffect -- run one time to get the starting data");
     displayItems(setItems);
-    console.log(items);
+    // console.log(items);
     // ignore the following [] warning
   }, []); // actually need the empty dependency array [] so only executed once
 
   // Any time rowDataArray changes then this hook will automatically be called.
   // Uncomment the following to console view the rowDataArray as it is updated.
-  useEffect(() => {
-    console.log("second useEffect runs whenever the items changes");
-    console.log(items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log("second useEffect runs whenever the items changes");
+  //   console.log(items);
+  // }, [items]);
 
   // suggestion: use hook to load the inventory manager
   //             put into a reusable hook or another module
   //            - hooks are great for when using state and in future using "spinner"
   async function addNewItem(itemName, itemQty) {
+    const itemFav = false;
     try {
       // take try/catch out here and put it inot the insertItem function
       // if using something like thunk later on it is helpful to seperate out operations.
-      const _id = await insertItem(itemName, itemQty);
+      const _id = await insertItem(itemName, itemQty, itemFav);
       const updatedItems = [
         ...items,
-        { _id: _id, name: itemName, qty: itemQty },
+        { _id: _id, name: itemName, qty: itemQty, fav: itemFav },
       ];
       console.log("This is the updatedItems", updatedItems);
       setItems(updatedItems);
@@ -56,14 +56,14 @@ export default function InventoryDetails() {
     }
   }
 
-  async function deleteAll() {
-    try {
-      await deleteAllItems();
-      setItems([]);
-    } catch (error) {
-      console.log("deleteAllItems sql error", error);
-    }
-  }
+  // async function deleteAll() {
+  //   try {
+  //     await deleteAllItems();
+  //     setItems([]);
+  //   } catch (error) {
+  //     console.log("deleteAllItems sql error", error);
+  //   }
+  // }
 
   async function deleteOne(id) {
     console.log("initial id", id);
@@ -76,12 +76,14 @@ export default function InventoryDetails() {
       console.log("deleteOneItem sql error", error);
     }
   }
-  async function editAll(id, itemName, qty) {
+  async function update(id, itemName, itemQty, itemFav) {
     try {
-      const updatedRow = { _id: id, name: itemName, qty: qty };
-
-      console.log('updated row', updatedRow);
-      // check each row for the matching id and if found return the updated row
+      const updatedRow = {
+        _id: id,
+        name: itemName,
+        qty: itemQty,
+        fav: itemFav,
+      };
       const updatedItems = items.map((row) => {
         if (row._id === id) {
           return updatedRow;
@@ -89,8 +91,7 @@ export default function InventoryDetails() {
         return row;
       });
       setItems(updatedItems);
-      const results = await updateOneItem(id, itemName, qty);
-      // console.log("const results from the await updateOneItem", results);
+      await updateOneItem(id, itemName, itemQty, itemFav);
     } catch (error) {
       console.log("updateOneItem sql error", error);
     }
@@ -101,21 +102,26 @@ export default function InventoryDetails() {
       <div>
         <InputForm addNewItem={addNewItem} className="InputForm" />
 
-        <button className="button" onClick={displayItems}>
-          Get Items
-        </button>
-        <button className="button" onClick={deleteAll}>
+        {/* <button className="button" onClick={deleteAll}>
           Delete All
-        </button>
+        </button> */}
       </div>
 
       <table className="TableContainer">
+        <thead>
+          <tr className="trHead">
+            <th className="tdFav">Fav</th>
+            <th>Qty</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
         {items.map((inventoryItem) => (
           <tbody key={inventoryItem._id}>
             <ListItem
               inventoryItem={inventoryItem}
               handleRemoveOne={deleteOne}
-              update={editAll}
+              update={update}
             />
           </tbody>
         ))}

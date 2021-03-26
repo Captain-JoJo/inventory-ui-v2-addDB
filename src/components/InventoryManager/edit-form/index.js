@@ -5,35 +5,57 @@ function EditItemForm({ inventoryItem, update, toggle }) {
     const [value, setValue] = useState(initialVal);
     const handleChange = (e) => setValue(e.target.value);
     const reset = () => setValue("");
+    console.log("value", value);
     return [value, handleChange, reset];
   }
-  const { name:itemName, qty, _id } = inventoryItem
-  // console.log('invetnoryItem', inventoryItem);
+  const { name: itemName, qty, _id, fav } = inventoryItem;
   const [valueQty, handleChangeQty, resetQty] = useInputState(qty);
-  // console.log('qty here', inventoryItem.qty);
-  // console.log('useInputState value', valueQty);
+  const [valueName, handleChangeName, resetName] = useInputState(itemName);
+
   return (
     <tr>
+      <td></td>
       <td>
         <form
           className="InputForm"
           onSubmit={(e) => {
             e.preventDefault();
-            update(_id, itemName, valueQty);
+            update(_id, valueName, valueQty, fav);
             resetQty();
             toggle();
           }}
         >
           <input
+          className="qtyInput"
             type="text"
             value={valueQty}
             onChange={handleChangeQty}
             label="Update quantity"
             autoFocus={true}
           />
-          Press Enter to Update
         </form>
       </td>
+
+      <td>
+        <form
+          className="InputForm"
+          onSubmit={(e) => {
+            e.preventDefault();
+            update(_id, valueName, valueQty, fav);
+            resetName();
+            toggle();
+          }}
+        >
+          <input
+          className="tdName"
+            type="text"
+            value={valueName}
+            onChange={handleChangeName}
+            label="Update name"
+          />
+        </form>
+      </td>
+      <td>Press Enter</td>
     </tr>
   );
 }

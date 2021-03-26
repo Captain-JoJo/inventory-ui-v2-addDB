@@ -20,10 +20,11 @@ function InputForm({ addNewItem }) {
         addNewItem(itemName, itemQty);
         console.log("name value", itemName);
         resetNameField();
-        resetQtyField()
+        resetQtyField();
       }}
     >
       <input
+        className="tdName"
         type="text"
         value={itemName}
         placeholder="Add New Item"
@@ -34,9 +35,9 @@ function InputForm({ addNewItem }) {
         className="qtyInput"
         type="text"
         value={itemQty}
-        placeholder="Add Quantity"
+        placeholder="Qty"
         onChange={handleChangeQty}
-        label="Add Quantity"
+        label="Qty"
       />
       <button type="submit">Add Item</button>
     </form>

@@ -40,8 +40,8 @@ export async function deleteOneItem(id) {
     return res.data;
   });
 }
-export async function updateOneItem(id, itemName, qty) {
-  const payload = { name: itemName, qty: qty };
+export async function updateOneItem(id, itemName, itemQty, itemFav) {
+  const payload = { name: itemName, qty: itemQty, fav: itemFav };
   return axios.put(`${BASE_URL}/updateOne/${id}`, payload).then((res) => {
     console.log("I am trying to update this one", id);
     console.log("This is the res.data in updateOneItem function", res.data);
