@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/inventory-ui-v2-addDB/static/css/main.2309a30b.chunk.css",
-    "main.js": "/inventory-ui-v2-addDB/static/js/main.f5abba38.chunk.js",
-    "main.js.map": "/inventory-ui-v2-addDB/static/js/main.f5abba38.chunk.js.map",
+    "main.js": "/inventory-ui-v2-addDB/static/js/main.28ced0e7.chunk.js",
+    "main.js.map": "/inventory-ui-v2-addDB/static/js/main.28ced0e7.chunk.js.map",
     "runtime-main.js": "/inventory-ui-v2-addDB/static/js/runtime-main.ded698cc.js",
     "runtime-main.js.map": "/inventory-ui-v2-addDB/static/js/runtime-main.ded698cc.js.map",
     "static/js/2.e114d119.chunk.js": "/inventory-ui-v2-addDB/static/js/2.e114d119.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ded698cc.js",
     "static/js/2.e114d119.chunk.js",
     "static/css/main.2309a30b.chunk.css",
-    "static/js/main.f5abba38.chunk.js"
+    "static/js/main.28ced0e7.chunk.js"
   ]
 }
