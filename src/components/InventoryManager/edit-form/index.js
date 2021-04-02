@@ -26,8 +26,8 @@ function EditItemForm({ inventoryItem, update, toggle }) {
           }}
         >
           <input
-            className="qtyInput"
-            name="qtyForm"
+            className="tdEditFormQty"
+            name="qtyEditForm"
             type="text"
             value={valueQty}
             onChange={handleChangeQty}
@@ -48,8 +48,8 @@ function EditItemForm({ inventoryItem, update, toggle }) {
           }}
         >
           <input
-            className="tdName"
-            name="nameForm"
+            className="tdEditFormName"
+            name="nameEditForm"
             type="text"
             value={valueName}
             onChange={handleChangeName}

@@ -15,10 +15,8 @@ export default function InventoryDetails() {
 
   useEffect(() => {
     console.log("run one time to get the starting data");
-    //toggle on spinner waiting for data to return
     displayItems(setItems);
-    //data is present and now need to take toggle off
-  }, []); // actually need the empty dependency array [] so only executed once
+  }, []); 
 
   // suggestion: use hook to load the inventory manager
   //             put into a reusable hook or another module
@@ -62,7 +60,6 @@ export default function InventoryDetails() {
     console.log("initial id", id);
     try {
       const results = await deleteOneItem(id);
-      console.log("setting react useState now", id);
       setItems(items.filter((item) => item._id !== id));
       console.log("const results from the await deleteOneItem", results);
     } catch (error) {

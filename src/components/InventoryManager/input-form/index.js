@@ -24,7 +24,8 @@ function InputForm({ addNewItem }) {
       }}
     >
       <input
-        className="tdName"
+        className="tdInputFormName"
+        name="nameInputForm"
         type="text"
         value={itemName}
         placeholder="Add New Item"
@@ -32,7 +33,8 @@ function InputForm({ addNewItem }) {
         label="Add New Item"
       />
       <input
-        className="qtyInput"
+        className="tdInputFormQty"
+        name="qtyInputForm"
         type="text"
         value={itemQty}
         placeholder="Qty"

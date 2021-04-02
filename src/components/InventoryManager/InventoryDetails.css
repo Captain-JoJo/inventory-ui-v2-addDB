@@ -3,74 +3,55 @@
   margin-top: 10px;
   max-width: 500px;
   padding: 15px;
-  /* padding-bottom: 200px; */
   background: #b8bec9;
   color: #222;
 }
+
+/* input form section */
 .InputForm {
   margin-bottom: 10px;
   display: inline;
-  
 }
 .InputForm input {
   margin: 5px;
   padding: 5px;
 }
-
 .InputForm button {
   margin-top: 3px;
   margin-left: 10px;
   width: 75px;
   height: 30px;
 }
-
 .InputForm button:hover {
   text-decoration: underline;
   color: blue;
 }
-.TableContainer button {
-  margin-left: 5px;
-  font-size: x-small;
-  width: 60px;
-  height: 20px;
-  display: inline;
-}
 
-.button {
-  margin-left: 5px;
-  font-size: x-small;
-  width: 60px;
-  height: 20px;
-  display: inline;
-}
-
+/* button section */
 .button:hover {
   color: blue;
   text-decoration: underline;
 }
-
 .button-group {
   margin-left: auto;
   float: right;
 }
 
-.delete-one-item {
-  padding-right: 10px;
-}
+/* ListContainer info */
 .ListContainer {
   border-style: none;
 }
 .ListContainer ul {
   margin: 0;
   padding: 0; /* forces the group of li rows to the left */
-  /* border-bottom-style: groove; */
 }
 .ListContainer li {
   display: grid;
   margin-top: 5px;
   padding: 7px 0px 2px 0px;
-  /* border-bottom-style: groove */
 }
+
+/* all about that .TableContainer */
 .TableContainer {
   width: 100%;
   /* border-style: groove; */
@@ -78,11 +59,13 @@
   margin-top: 5px;
   padding: 7px 0px 2px 10px;
 }
-.trList {
-  padding: 150px;
+.TableContainer button {
+  margin-left: 5px;
+  font-size: small;
+  width: 70px;
+  height: 25px;
+  display: inline;
 }
-
-
 .TableContainer tr{
   border-bottom-style: solid;
   border-width: 1px;
@@ -91,32 +74,24 @@
   border-bottom-style: none;
   text-align: left;
 }
-
 .TableContainer td {
   margin: 0px;
   padding: 5px;
-  /* border-bottom-style: groove */
-  
 }
 
+/* td css logic */
 .tdFav{
-  width: 7%;
+  width: 8%;
 }
-
-.tdQty{
-  width: 10%;
+.tdInputFormQty{
+  width: 6%;
 }
-
-.tdName{
+.tdInputFormName{
   width: 40%;
 }
-.qtyInput {
+.tdEditFormQty {
   width: 30px
 }
-
-
-/* .qty {
-  display: inline;
-  margin-top: 25px;
-  padding: 7px 0px 2px 0px;
-} */
+.tdEditFormName{
+  width: 90%
+}
