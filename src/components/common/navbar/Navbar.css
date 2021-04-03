@@ -25,4 +25,5 @@
 }
 .navbar a.gitHubLink{
     float: right;
+    background-color: #000;
 }
