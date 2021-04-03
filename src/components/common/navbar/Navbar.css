@@ -23,3 +23,6 @@
 .active {
     background-color: #4CAF50;
 }
+.navbar a.gitHubLink{
+    float: right;
+}
