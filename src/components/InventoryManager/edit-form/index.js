@@ -28,11 +28,11 @@ function EditItemForm({ inventoryItem, update, toggle }) {
           <input
             className="tdEditFormQty"
             name="qtyEditForm"
-            type="text"
+            type="number"
             value={valueQty}
             onChange={handleChangeQty}
             label="Update quantity"
-            autoFocus={true}
+            
           />
         </form>
       </td>
@@ -54,6 +54,7 @@ function EditItemForm({ inventoryItem, update, toggle }) {
             value={valueName}
             onChange={handleChangeName}
             label="Update name"
+            autoFocus={true}
           />
         </form>
       </td>

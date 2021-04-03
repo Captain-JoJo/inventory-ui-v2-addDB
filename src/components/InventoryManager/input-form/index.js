@@ -31,15 +31,17 @@ function InputForm({ addNewItem }) {
         placeholder="Add New Item"
         onChange={handleNameChange}
         label="Add New Item"
+        required
       />
       <input
         className="tdInputFormQty"
         name="qtyInputForm"
-        type="text"
+        type="number"
         value={itemQty}
         placeholder="Qty"
         onChange={handleChangeQty}
         label="Qty"
+        required
       />
       <button type="submit">Add Item</button>
     </form>
