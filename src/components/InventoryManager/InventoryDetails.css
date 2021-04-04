@@ -29,8 +29,8 @@
 
 /* button section */
 .button:hover {
-  color: blue;
-  text-decoration: underline;
+  /* color: blue; */
+  /* text-decoration: underline; */
 }
 .button-group {
   margin-left: auto;
@@ -60,9 +60,11 @@
   padding: 7px 0px 2px 10px;
 }
 .TableContainer button {
+  background: transparent;
+  border: none !important;
   margin-left: 5px;
   font-size: small;
-  width: 70px;
+  width: 35px;
   height: 25px;
   display: inline;
 }

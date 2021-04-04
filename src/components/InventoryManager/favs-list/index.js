@@ -21,8 +21,8 @@ function Favorites() {
               handleRemoveOne={deleteOne}
               update={update}
             />
-          </tbody> */}
-        {/* ))} */}
+          </tbody>
+         ))}  */}
       </table>
     </div>
   );

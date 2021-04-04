@@ -34,10 +34,8 @@ export default function ListItem({inventoryItem, handleRemoveOne, update}) {
             <td className="tdName">{name}</td>
             <td>
               <span className="button-group">
-                <button className="button" onClick={toggle}>Edit</button>
-                <button className="button" onClick={() => handleRemoveOne(_id)}>
-                  Remove
-                </button>
+                <button className="button" onClick={toggle}>✏️</button>
+                <button className="button" onClick={() => handleRemoveOne(_id)}>🗑️</button>
               </span>
             </td>
           </tr>

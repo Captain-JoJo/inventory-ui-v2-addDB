@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./InventoryDetails.css";
 import InputForm from "./input-form";
 import ListItem from "./inventory-list";
@@ -16,7 +16,7 @@ export default function InventoryDetails() {
   useEffect(() => {
     console.log("run one time to get the starting data");
     displayItems(setItems);
-  }, []); 
+  }, []);
 
   // suggestion: use hook to load the inventory manager
   //             put into a reusable hook or another module
@@ -27,10 +27,7 @@ export default function InventoryDetails() {
       // take try/catch out here and put it inot the insertItem function
       // if using something like thunk later on it is helpful to seperate out operations.
       const _id = await insertItem(itemName, itemQty, itemFav);
-      const updatedItems = [
-        ...items,
-        { _id: _id, name: itemName, qty: itemQty, fav: itemFav },
-      ];
+      const updatedItems = [...items, {_id: _id, name: itemName, qty: itemQty, fav: itemFav}];
       console.log("This is the updatedItems", updatedItems);
       setItems(updatedItems);
     } catch (error) {
@@ -86,17 +83,21 @@ export default function InventoryDetails() {
       console.log("updateOneItem sql error", error);
     }
   }
+  async function displayFavs() {
+    const updatedFavItems = items.filter((item) => item.fav !== true);
+    console.log("fav items", updatedFavItems);
+  }
 
   return (
     <div className="grid-container">
       <div>
         <InputForm addNewItem={addNewItem} className="InputForm" />
-
+        
         {/* <button className="button" onClick={deleteAll}>
           Delete All
         </button> */}
       </div>
-{/* ternary if true the toggle is turned on display spinner 
+      {/* ternary if true the toggle is turned on display spinner 
 if false then diplay table*/}
       <table className="TableContainer">
         <thead>
@@ -109,11 +110,7 @@ if false then diplay table*/}
         </thead>
         {items.map((inventoryItem) => (
           <tbody key={inventoryItem._id}>
-            <ListItem
-              inventoryItem={inventoryItem}
-              handleRemoveOne={deleteOne}
-              update={update}
-            />
+            <ListItem inventoryItem={inventoryItem} handleRemoveOne={deleteOne} update={update} />
           </tbody>
         ))}
       </table>
