@@ -28,10 +28,6 @@
 }
 
 /* button section */
-.button:hover {
-  /* color: blue; */
-  /* text-decoration: underline; */
-}
 .button-group {
   margin-left: auto;
   float: right;
