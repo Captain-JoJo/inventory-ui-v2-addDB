@@ -92,11 +92,10 @@ export default function InventoryDetails() {
     <div className="grid-container">
       <div>
         <InputForm addNewItem={addNewItem} className="InputForm" />
-        
-        {/* <button className="button" onClick={deleteAll}>
-          Delete All
-        </button> */}
       </div>
+      {/* <div>
+        <Favorites displayFavs={displayFavs} className="InputForm" />
+      </div> */}
       {/* ternary if true the toggle is turned on display spinner 
 if false then diplay table*/}
       <table className="TableContainer">
