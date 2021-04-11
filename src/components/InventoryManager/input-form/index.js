@@ -15,7 +15,7 @@ function InputForm({ addNewItem }) {
   return (
     <form
       className="InputForm"
-      autocomplete="off"
+      autoComplete="off"
       onSubmit={(e) => {
         e.preventDefault();
         addNewItem(itemName, itemQty);

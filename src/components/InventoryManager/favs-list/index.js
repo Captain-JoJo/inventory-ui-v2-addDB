@@ -9,30 +9,24 @@ import {
 } from "../../../api/inventoryItem";
 
 function Favorites() {
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     console.log("run one time to get the starting data");
     displayItems(setItems);
-    displayFavs()
   }, []);
-
-  useEffect(() => {
-    console.log("second useEffect runs whenever the dataArray changes");
-  }, [displayFavs]);
 
   async function displayItems() {
     try {
       const results = await getAllItems();
-      setItems(results);
-      console.log('testing results',results);
+      displayFavs(results);
+      console.log("testing results", results);
     } catch (error) {
       console.log("getAllItems sql error", error);
     }
   }
-  function displayFavs() {
-    const updatedFavItems = items.filter((item) => item.fav !== false);
+  function displayFavs(results) {
+    const updatedFavItems = results.filter((item) => item.fav !== false);
     setItems(updatedFavItems);
     console.log("fav items", updatedFavItems);
   }
@@ -47,16 +41,15 @@ function Favorites() {
             <th></th>
           </tr>
         </thead>
-        {items.map((itemRow) => (
-          <Fragment>
-          <tr>
-          <tbody key={itemRow._id}>
-            <td className="tdQty">{itemRow.qty}</td>
-            <td className="tdName">{itemRow.name}</td>
+        {items.map((inventoryItem) => (
+          <tbody key={inventoryItem._id}>
+            <tr>
+              <td>✔️</td>
+              <td className="tdQty">{inventoryItem.qty}</td>
+              <td className="tdName">{inventoryItem.name}</td>
+            </tr>
           </tbody>
-          </tr>
-          </Fragment>
-         ))} 
+        ))}
       </table>
     </div>
   );
