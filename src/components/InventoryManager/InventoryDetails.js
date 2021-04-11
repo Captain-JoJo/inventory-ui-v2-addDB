@@ -2,15 +2,11 @@ import React, {useState, useEffect} from "react";
 import "./InventoryDetails.css";
 import InputForm from "./input-form";
 import ListItem from "./inventory-list";
-import {
-  insertItem,
-  getAllItems,
-  deleteOneItem,
-  updateOneItem,
-} from "../../api/inventoryItem";
+import {insertItem, getAllItems, deleteOneItem, updateOneItem} from "../../api/inventoryItem";
 
 export default function InventoryDetails() {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("run one time to get the starting data");
@@ -32,8 +28,10 @@ export default function InventoryDetails() {
   }
   async function displayItems() {
     try {
+      setLoading(true);
       const results = await getAllItems();
       setItems(results);
+      setLoading(false);
     } catch (error) {
       console.log("getAllItems sql error", error);
     }
@@ -74,21 +72,25 @@ export default function InventoryDetails() {
       <div>
         <InputForm addNewItem={addNewItem} className="InputForm" />
       </div>
-      <table className="TableContainer">
-        <thead>
-          <tr className="trHead">
-            <th className="tdFav">Fav</th>
-            <th>Qty</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-        </thead>
-        {items.map((inventoryItem) => (
-          <tbody key={inventoryItem._id}>
-            <ListItem inventoryItem={inventoryItem} handleRemoveOne={deleteOne} update={update} />
-          </tbody>
-        ))}
-      </table>
+      {loading ? (
+        <div> Loading results...</div>
+      ) : (
+        <table className="TableContainer">
+          <thead>
+            <tr className="trHead">
+              <th className="tdFav">Fav</th>
+              <th>Qty</th>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          {items.map((inventoryItem) => (
+            <tbody key={inventoryItem._id}>
+              <ListItem inventoryItem={inventoryItem} handleRemoveOne={deleteOne} update={update} />
+            </tbody>
+          ))}
+        </table>
+      )}
     </div>
   );
 }
