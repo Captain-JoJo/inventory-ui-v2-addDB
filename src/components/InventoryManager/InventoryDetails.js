@@ -13,6 +13,11 @@ export default function InventoryDetails() {
     displayItems(setItems);
   }, []);
 
+  // useEffect(() => {
+  //   console.log("second useEffect runs whenever the dataArray changes");
+  //   console.log(items);
+  // }, [items]);
+
   async function addNewItem(itemName, itemQty) {
     const itemFav = false;
     try {

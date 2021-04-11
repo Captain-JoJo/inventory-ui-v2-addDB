@@ -3,7 +3,7 @@ import {getAllItems} from "../../../api/inventoryItem";
 
 function Favorites() {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log("run one time to get the starting data");
@@ -12,7 +12,6 @@ function Favorites() {
 
   async function displayItems() {
     try {
-      setLoading(true)
       const results = await getAllItems();
       displayFavs(results);
       console.log("testing results", results);
