@@ -1,12 +1,5 @@
-import React, {Fragment, useState, useEffect} from "react";
-import {NavLink, Link} from "react-router-dom";
-import {
-  insertItem,
-  getAllItems,
-  deleteAllItems,
-  deleteOneItem,
-  updateOneItem,
-} from "../../../api/inventoryItem";
+import React, { useState, useEffect} from "react";
+import { getAllItems } from "../../../api/inventoryItem";
 
 function Favorites() {
   const [items, setItems] = useState([]);
@@ -26,7 +19,7 @@ function Favorites() {
     }
   }
   function displayFavs(results) {
-    const updatedFavItems = results.filter((item) => item.fav !== false);
+    const updatedFavItems = results.filter((item) => item.fav);
     setItems(updatedFavItems);
     console.log("fav items", updatedFavItems);
   }

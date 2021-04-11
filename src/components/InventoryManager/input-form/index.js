@@ -19,7 +19,6 @@ function InputForm({ addNewItem }) {
       onSubmit={(e) => {
         e.preventDefault();
         addNewItem(itemName, itemQty);
-        console.log("name value", itemName);
         resetNameField();
         resetQtyField();
       }}

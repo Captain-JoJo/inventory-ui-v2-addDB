@@ -5,7 +5,6 @@ import ListItem from "./inventory-list";
 import {
   insertItem,
   getAllItems,
-  deleteAllItems,
   deleteOneItem,
   updateOneItem,
 } from "../../api/inventoryItem";
@@ -18,9 +17,6 @@ export default function InventoryDetails() {
     displayItems(setItems);
   }, []);
 
-  // suggestion: use hook to load the inventory manager
-  //             put into a reusable hook or another module
-  //            - hooks are great for when using state and in future using "spinner"
   async function addNewItem(itemName, itemQty) {
     const itemFav = false;
     try {
@@ -34,7 +30,6 @@ export default function InventoryDetails() {
       console.log("insertItem sql error", error);
     }
   }
-
   async function displayItems() {
     try {
       const results = await getAllItems();
@@ -43,16 +38,6 @@ export default function InventoryDetails() {
       console.log("getAllItems sql error", error);
     }
   }
-
-  // async function deleteAll() {
-  //   try {
-  //     await deleteAllItems();
-  //     setItems([]);
-  //   } catch (error) {
-  //     console.log("deleteAllItems sql error", error);
-  //   }
-  // }
-
   async function deleteOne(id) {
     console.log("initial id", id);
     try {
@@ -83,21 +68,12 @@ export default function InventoryDetails() {
       console.log("updateOneItem sql error", error);
     }
   }
-  async function displayFavs() {
-    const updatedFavItems = items.filter((item) => item.fav !== true);
-    console.log("fav items", updatedFavItems);
-  }
 
   return (
     <div className="grid-container">
       <div>
         <InputForm addNewItem={addNewItem} className="InputForm" />
       </div>
-      {/* <div>
-        <Favorites displayFavs={displayFavs} className="InputForm" />
-      </div> */}
-      {/* ternary if true the toggle is turned on display spinner 
-if false then diplay table*/}
       <table className="TableContainer">
         <thead>
           <tr className="trHead">

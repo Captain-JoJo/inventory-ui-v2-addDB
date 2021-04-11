@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function EditItemForm({ inventoryItem, update, toggle }) {
+
   function useInputState(initialVal) {
     const [value, setValue] = useState(initialVal);
     const handleChange = (e) => setValue(e.target.value);
@@ -8,6 +9,7 @@ function EditItemForm({ inventoryItem, update, toggle }) {
     console.log("value", value);
     return [value, handleChange, reset];
   }
+  
   const { name: itemName, qty, _id, fav } = inventoryItem;
   const [valueQty, handleChangeQty, resetQty] = useInputState(qty);
   const [valueName, handleChangeName, resetName] = useInputState(itemName);
