@@ -11,8 +11,9 @@ const AppRouter = () => (
       <Navbar />
       <Header />
       <Switch>
+        <Route path="/inventory-ui-v2-addDB" component={InventoryDetails} />
+        <Route path="/home" component={InventoryDetails} />
         <Route path="/favs" component={Favorites} />
-        <Route path="/" component={InventoryDetails} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
