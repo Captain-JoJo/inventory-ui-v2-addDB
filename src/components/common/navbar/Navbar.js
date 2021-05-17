@@ -18,6 +18,7 @@ function NavBar() {
       >
         GitHub
       </Link>
+      
     </div>
   );
 }
