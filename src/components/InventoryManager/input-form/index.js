@@ -2,12 +2,19 @@ import React, { useState } from "react";
 
 function InputForm({ addNewItem }) {
   const [itemName, handleNameChange, resetNameField] = useInputState("");
-  const [itemQty, handleChangeQty, resetQtyField] = useInputState("");
+  const [itemQty, handleChangeQty, resetQtyField] = useInputStateQty("1");
 
   function useInputState(initialValue) {
     const [newValue, setValue] = useState(initialValue);
     const handleChange = (event) => setValue(event.target.value);
     const reset = () => setValue("");
+    console.log(newValue);
+    return [newValue, handleChange, reset];
+  }
+  function useInputStateQty(initialValue) {
+    const [newValue, setValue] = useState(initialValue);
+    const handleChange = (event) => setValue(event.target.value);
+    const reset = () => setValue("1");
     console.log(newValue);
     return [newValue, handleChange, reset];
   }
